@@ -1,1 +1,2 @@
 # calculator
+Simple web calculator
