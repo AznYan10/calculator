@@ -75,6 +75,17 @@ body{
     left: 5%;
 }
 
+#number {
+    font-size: 45px;
+    width: 96%;
+    height: 90%;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
 #equal {
     width: 134px;
 }
