@@ -1,10 +1,5 @@
 // All necessary elements
-const numbers = document.querySelectorAll('.number');
-const operators = document.querySelectorAll('.operator');
-const equalBtn = document.querySelector('#equal');
-const clrBtn = document.querySelector('.clear');
-const delBtn = document.querySelector('.delete');
-const plusMinusBtn = document.querySelector('plusminus');
+const buttons = document.querySelectorAll('.button');
 
 // calculator object
 const calculator = {
@@ -14,47 +9,64 @@ const calculator = {
     operator: false,
  };
 
+ function inputDigit (digit) {
+    const {displayValue} = calculator;
+    calculator.displayValue = displayValue === '0' ? digit : displayValue + digit;
+ }
+
+function updateDisplay () {
+    const display = document.querySelector('#number');
+    // update the value of the diplay 
+    display.value = calculator.displayValue;
+}
+
+updateDisplay();
+
 // functions for operators 
-function add (x, y, operator) {
-    operator = x + y;
-    return operator;
-}
+// function add (x, y, operator) {
+//     operator = x + y;
+//     return operator;
+// }
 
-function subtract (x, y, operator) {
-    operator = x - y;
-    return operator;
-}
+// function subtract (x, y, operator) {
+//     operator = x - y;
+//     return operator;
+// }
 
-function multiply (x, y, operator) {
-    operator = x * y;
-    return operator;
-}
+// function multiply (x, y, operator) {
+//     operator = x * y;
+//     return operator;
+// }
 
-function divide (x, y, operator) {
-    operator = x / y;
-    return operator;
-}
+// function divide (x, y, operator) {
+//     operator = x / y;
+//     return operator;
+// }
 
-numbers.forEach(button => {
-    button.addEventListener('click', () => {
-    
-    })
-});
+const keys = document.querySelector('.keys');
+keys.addEventListener('click', (event) => {
+    // access clicked element 
+    const {target} = event;
 
-operators.forEach(operator => {
-    operator.addEventListener('click', () => {
+    if (!target.matches('button')) {
+        return;
+    }
 
-    })
-});
+    if (target.classList.contains('operator')) {
+        console.log('operator', target.value);
+        return;
+    }
 
-equalBtn.addEventListener('click', button => {
+    if (target.classList.contains('decimal')) {
+        console.log('decimal', target.value);
+        return;
+    }
 
-});
+    if (target.classList.contains('clear')) {
+        console.log('clear', target.value);
+        return;
+    }
 
-clrBtn.addEventListener('click', button => {
-
-});
-
-delBtn.addEventListener('click', button => {
-
+    inputDigit(target.value);
+    updateDisplay();
 });
