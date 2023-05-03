@@ -14,6 +14,22 @@ const calculator = {
     calculator.displayValue = displayValue === '0' ? digit : displayValue + digit;
  }
 
+ function inputDecimal (dot) {
+    if (!calculator.displayValue.includes(dot)) {
+        calculator.displayValue += dot;
+    }
+ }
+
+ function handleOperator (nextOperator) {
+    // destruct calculator object 
+    const { firstOperand, displayValue, operator } = calculator;
+    const inputValue = parseFloat(displayValue);
+
+    if (firstOperand === null && !isNaN(inputValue)) {
+        calculator.firstOperand = inputValue;
+    }
+ }
+
 function updateDisplay () {
     const display = document.querySelector('#number');
     // update the value of the diplay 
@@ -58,7 +74,8 @@ keys.addEventListener('click', (event) => {
     }
 
     if (target.classList.contains('decimal')) {
-        console.log('decimal', target.value);
+        inputDecimal(target.value);
+        updateDisplay();
         return;
     }
 
