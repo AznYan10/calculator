@@ -77,15 +77,12 @@ body{
 
 #number {
     font-size: 45px;
-    width: 96%;
-    height: 90%;
+    width: 98%;
+    height: 95%;
     margin: 0;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    flex-wrap: wrap;
+    text-align: right;
 }
 
-#equal {
+.equal {
     width: 134px;
 }
