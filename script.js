@@ -66,6 +66,14 @@ const calculator = {
     return secondOperand;
  }
 
+ function resetCalculator () {
+    calculator.displayValue = '0';
+    calculator.firstOperand = null;
+    calculator.waitingForSecondOperand = false;
+    calculator.operator = null;
+    console.log(calculator);
+ }
+
 function updateDisplay () {
     const display = document.querySelector('#number');
     // update the value of the diplay 
@@ -73,27 +81,6 @@ function updateDisplay () {
 }
 
 updateDisplay();
-
-// functions for operators 
-// function add (x, y, operator) {
-//     operator = x + y;
-//     return operator;
-// }
-
-// function subtract (x, y, operator) {
-//     operator = x - y;
-//     return operator;
-// }
-
-// function multiply (x, y, operator) {
-//     operator = x * y;
-//     return operator;
-// }
-
-// function divide (x, y, operator) {
-//     operator = x / y;
-//     return operator;
-// }
 
 const keys = document.querySelector('.keys');
 keys.addEventListener('click', (event) => {
@@ -117,7 +104,8 @@ keys.addEventListener('click', (event) => {
     }
 
     if (target.classList.contains('clear')) {
-        console.log('clear', target.value);
+        resetCalculator();
+        updateDisplay();
         return;
     }
 
