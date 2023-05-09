@@ -72,7 +72,14 @@ const calculator = {
     return secondOperand;
  }
 
- function resetCalculator () {
+function deleteNumber (number) {
+    number = calculator.displayValue.slice(0 ,-1);
+    calculator.firstOperand = parseInt(number);
+    calculator.displayValue = number;
+    console.log(calculator);
+}
+
+function resetCalculator () {
     calculator.displayValue = '0';
     calculator.firstOperand = null;
     calculator.waitingForSecondOperand = false;
@@ -111,6 +118,8 @@ keys.addEventListener('click', (event) => {
         case 'clear':
             resetCalculator();
             break;
+        case 'delete':
+            deleteNumber();
         default:
             // check if key is an integer
             if (Number.isInteger(parseFloat(value))) {
