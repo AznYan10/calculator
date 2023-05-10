@@ -72,19 +72,20 @@ const calculator = {
     return secondOperand;
  }
 
-function negativeNumber (number) {
-    number = calculator.displayValue;
-    if (parseFloat(number) < 0) {
-        number = Math.abs(calculator.displayValue).toString();
+function negativeNumber () {
+    const { displayValue } = calculator;
+    const number = parseFloat(displayValue);
+
+    if (number !== 0) {
+        calculator.displayValue = (-number).toString();
+        calculator.firstOperand = -number;
     }
 
-    number = -Math.abs(calculator.displayValue)
-    calculator.firstOperand = number;
-    calculator.displayValue = number.toString();
+    updateDisplay();
     console.log(calculator);
 }
 
-function deleteNumber (number) {
+function deleteNumber () {
     const { displayValue, operator } = calculator;
     let newValue = displayValue.slice(0, -1);
 
@@ -139,13 +140,13 @@ keys.addEventListener('click', (event) => {
             inputDecimal(value);
             break;
         case 'negative':
-            negativeNumber(value);
+            negativeNumber();
             break;
         case 'clear':
             resetCalculator();
             break;
         case 'delete':
-            deleteNumber(value);
+            deleteNumber();
         default:
             // check if key is an integer
             if (Number.isInteger(parseFloat(value))) {
