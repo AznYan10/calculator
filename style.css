@@ -1,8 +1,38 @@
+header {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 50px;
+    width: 100%;
+    height: 100px;
+    margin: 0 8;
+    background-color: aliceblue;
+    color: burlywood;
+    border-bottom: 2px solid black;
+    position: absolute;
+    top: 0;
+}
+
 body{
     display: flex;
     min-height: 100vh;
     justify-content: center;
     align-items: center;
+    background-color: burlywood;
+}
+
+footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    background-color: aliceblue;
+    color: burlywood;
+    height: 25px;
+    bottom: 0;
+    position: fixed;
+    padding-right: 20px;
+    border-top: .5px solid black;
 }
 
 .calcBody {
@@ -12,6 +42,7 @@ body{
     height: 550px;
     border: 2px solid black;
     border-radius: 4%;
+    margin-top: 60px;
 }
 
 .button {
@@ -19,6 +50,7 @@ body{
     justify-content: center;
     align-items: center;
     border: 2px solid black;
+    background-color: burlywood;
     height: 60px;
     width: 60px;
     border-radius: 8%;
@@ -28,7 +60,7 @@ body{
 }
 
 .button:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(222, 184, 135, 0.1);
 }
 
 .button:active {
@@ -36,7 +68,7 @@ body{
 }
 
 .display {
-    background-color: white;
+    background-color: burlywood;
     text-align: center;
     border: 2px solid black;
     border-radius: 4%;
