@@ -88,20 +88,19 @@ function negativeNumber () {
 function deleteNumber () {
     const { displayValue, operator } = calculator;
     let newValue = displayValue.slice(0, -1);
-
+  
     if (displayValue.length === 1 || (displayValue.length === 2 && displayValue.includes('-'))) {
-        newValue = '0';
+      newValue = '0';
     }
-
+  
     if (operator === '=') {
-        calculator.firstOperand = null;
-        calculator.operator = null;
+      calculator.firstOperand = null;
+      calculator.operator = null;
     }
-
+  
     calculator.displayValue = newValue;
-    updateDisplay();
     console.log(calculator);
-}
+  }
 
 function resetCalculator () {
     calculator.displayValue = '0';
@@ -116,6 +115,43 @@ function updateDisplay () {
     // update the value of the diplay 
     display.value = calculator.displayValue;
 }
+
+// Add event listener for keyboard input
+document.addEventListener('keydown', (event) => {
+    const { key } = event;
+  
+    switch(key) {
+        case 'Delete':
+          resetCalculator();
+          break;
+        case 'Backspace':
+            deleteNumber();
+            break;
+        case 'Enter':
+            if (!calculator.displayValue.includes('.')) {
+                inputDecimal('.');
+            }
+            handleOperator('=');
+            break;
+        case '.':
+          inputDecimal(key);
+          break;
+        case '+':
+        case '-':
+        case '*':
+        case '/':
+        case '=':
+          handleOperator(key);
+          break;
+        default:
+          if (Number.isInteger(parseInt(key))) {
+            inputDigit(key);
+          }
+      }
+
+      updateDisplay();
+  });
+
 
 updateDisplay();
 
